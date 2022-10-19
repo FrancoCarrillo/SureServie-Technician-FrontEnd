@@ -1,0 +1,29 @@
+.toolbar-icon{
+  cursor: pointer;
+}
+
+.toolbar-title{
+  margin-left: 20px;
+}
+
+.app-container {
+  height: 90vh;
+}
+
+.side-nav{
+  width: 15%;
+}
+
+.nav-icon{
+  margin-right: 20px;
+}
+
+.spacer-nav{
+  height: 40vh;
+}
+
+
+.side-nav-image{
+  margin: 25px 0;
+  width: 100%;
+}
