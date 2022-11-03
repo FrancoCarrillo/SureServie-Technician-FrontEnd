@@ -150,16 +150,15 @@ export class SignupComponent implements OnInit {
         return
       }
 
-      console.log(this.newUser)
-      //this.signupService.sign_up(this.newUser).subscribe((response: any) =>{
-      //  localStorage.setItem("id", response.id)
-      //  this.route.navigate(['/service-request']).then( () =>{
-      //      location.reload()
-      //    }
-      //  );
-      //}, () =>{
-      //  alert("Bad Information")
-      //})
+      this.signupService.sign_up(this.newUser).subscribe((response: any) =>{
+        localStorage.setItem("id", response.id)
+        this.route.navigate(['/service-request']).then( () =>{
+            location.reload()
+          }
+        );
+      }, () =>{
+        alert("Information already use")
+      })
 
     } else {
       alert("Missing Information")

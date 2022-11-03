@@ -52,7 +52,8 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Professional Profile</mat-label>
-      <input matInput placeholder="Professional Profile" formControlName="professional_profile" />
+      <textarea matInput placeholder="Professional Profile" formControlName="professional_profile" rows="4">
+      </textarea>
       <mat-error *ngIf="professional_profile?.errors?.['required']">
         Professional Profile is required
       </mat-error>
