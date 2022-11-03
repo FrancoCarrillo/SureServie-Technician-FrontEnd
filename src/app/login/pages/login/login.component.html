@@ -1,1 +1,32 @@
-<p>login works!</p>
+<mat-card>
+  <form [formGroup]="loginForm">
+    <div class="spacer-t-1"></div>
+    <span class="header-login">Login</span>
+    <div class="spacer-t-2"></div>
+    <mat-form-field appearance="fill">
+      <mat-label>Your username</mat-label>
+      <input matInput placeholder="Username" formControlName="username" [(ngModel)]="user.username"/>
+      <mat-error *ngIf="username?.errors?.['required']">
+        Username is required
+      </mat-error>
+    </mat-form-field>
+    <div class="spacer-t-3"></div>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" type="password" placeholder="Password" formControlName="password" [(ngModel)]="user.password"/>
+      <mat-error *ngIf="password?.errors?.['required']">
+        Password is required
+      </mat-error>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+    <div class="spacer-t-5"></div>
+    <div class="center margin-top">
+      <button class="login-button" type="submit" mat-raised-button (click)="onLogin()">LOGIN</button>
+    </div>
+    <div class="spacer-t-6"></div>
+    <span class="center margin-top final-text-login">Don’t have an Account? <a class="sign-up-link" routerLink="/sing-up">Sign up</a></span>
+    <div class="spacer-t-5"></div>
+  </form>
+</mat-card>
