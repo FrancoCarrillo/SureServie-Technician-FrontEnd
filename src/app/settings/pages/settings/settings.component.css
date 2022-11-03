@@ -1,0 +1,48 @@
+.settings {
+  display: flex;
+}
+.settings-form{
+  display: flex;
+  flex-direction: column;
+
+
+  padding: 20px 20px 0;
+}
+.image-user{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  padding: 20px 3.3rem;
+}
+.edit-button, .save-button, .cancel-button {
+  color: white;
+}
+
+.settings-button{
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+.save-button {
+  background-color: #0332FC;
+}
+.edit-button {
+  background-color: #0332FC;
+}
+
+.cancel-button{
+  background-color: red;
+  margin-top: 6px;
+}
+
+.mat-input-element:disabled, .mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix::after {
+  color: black;
+}
+
+.mat-form-field-appearance-outline.mat-form-field-disabled .mat-form-field-outline {
+  color: rgba(12, 12, 12, 0.06);
+}
+
+
