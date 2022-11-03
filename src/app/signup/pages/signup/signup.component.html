@@ -1,1 +1,50 @@
-<p>signup works!</p>
+<mat-card>
+  <form [formGroup]="signUp">
+    <div class="spacer-t-1"></div>
+    <span class="header-login">Sign Up</span>
+    <div class="spacer-t-2"></div>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Your Email</mat-label>
+      <input matInput placeholder="Email address" formControlName="email" />
+      <mat-error *ngIf="email?.errors?.['required']">
+        Email is required
+      </mat-error>
+    </mat-form-field>
+    <div class="spacer-t-3"></div>
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput/>
+    </mat-form-field>
+    <div class="spacer-t-3"></div>
+    <mat-form-field appearance="fill">
+      <mat-label>Mobile Number</mat-label>
+      <input matInput/>
+    </mat-form-field>
+    <div class="spacer-t-3"></div>
+    <mat-form-field appearance="fill">
+      <mat-label>Address</mat-label>
+      <input matInput/>
+    </mat-form-field>
+    <div class="spacer-t-3"></div>
+    <div class="example-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" type="password" placeholder="Password" formControlName="password"/>
+        <mat-error *ngIf="password?.errors?.['required']">
+          Password is required
+        </mat-error>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div class="spacer-t-5"></div>
+    <div class="center margin-top">
+      <button class="login-button" type="submit" mat-raised-button>SIGN UP</button>
+    </div>
+    <div class="spacer-t-6"></div>
+    <span class="center margin-top final-text-login">Do you already have an account? <a class="sign-up-link" routerLink="/log-in">Log in</a></span>
+    <div class="spacer-t-5"></div>
+  </form>
+</mat-card>

@@ -1,1 +1,40 @@
-<p>settings works!</p>
+<div class="settings">
+  <div class="image-user">
+    <img src="./assets/us2.png" alt="profile-img">
+    <button class="save-button" type="submit" mat-raised-button>Change Profile Image</button>
+  </div>
+  <div style=" flex: 1;">
+    <form [formGroup]="settingsForm" class="settings-form">
+      <mat-form-field appearance="outline" class="input-settings" >
+        <mat-label>Your Name</mat-label>
+        <input matInput value="{{ client.name }}"  [(ngModel)]="client.name" placeholder="Name" formControlName="name">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Your lastname</mat-label>
+        <input matInput value="{{ client.last_name }}" [(ngModel)]="client.last_name" placeholder="Lastname" formControlName="lastname">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Your telephone number</mat-label>
+        <input matInput value="{{ client.telephone_number }}" [(ngModel)]="client.telephone_number" placeholder="Telephone Number" formControlName="telephone_number">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>ID Number</mat-label>
+        <input matInput value="{{ client.dni }}" [(ngModel)]="client.dni" placeholder="ID Number" formControlName="id_number">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Your username</mat-label>
+        <input matInput value="{{ client.username }}" [(ngModel)]="client.username" placeholder="Username" formControlName="username">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Your email</mat-label>
+        <input matInput value="{{ client.email }}" [(ngModel)]="client.email" placeholder="Email" formControlName="email">
+      </mat-form-field>
+    </form>
+    <div class="settings-button">
+      <button *ngIf="!enable" class="edit-button" type="submit" mat-raised-button (click)="editForm()">EDIT</button>
+      <button *ngIf="enable" class="save-button" type="submit" mat-raised-button (click)="saveData()">SAVE</button>
+      <button *ngIf="enable" class="cancel-button" type="submit" mat-raised-button (click)="cancelEditForm()">CANCEL</button>
+    </div>
+  </div>
+
+</div>
