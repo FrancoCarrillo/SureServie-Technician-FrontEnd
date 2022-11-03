@@ -5,6 +5,14 @@
     <div class="spacer-t-2"></div>
 
     <mat-form-field appearance="fill">
+      <mat-label>Your Username</mat-label>
+      <input matInput placeholder="Username" formControlName="username" />
+      <mat-error *ngIf="username?.errors?.['required']">
+        Username is required
+      </mat-error>
+    </mat-form-field>
+    <div class="spacer-t-3"></div>
+    <mat-form-field appearance="fill">
       <mat-label>Your Email</mat-label>
       <input matInput placeholder="Email address" formControlName="email" />
       <mat-error *ngIf="email?.errors?.['required']">
@@ -14,17 +22,40 @@
     <div class="spacer-t-3"></div>
     <mat-form-field appearance="fill">
       <mat-label>Name</mat-label>
-      <input matInput/>
+      <input matInput placeholder="Name" formControlName="name" />
+      <mat-error *ngIf="name?.errors?.['required']">
+        Email is required
+      </mat-error>
     </mat-form-field>
     <div class="spacer-t-3"></div>
     <mat-form-field appearance="fill">
-      <mat-label>Mobile Number</mat-label>
-      <input matInput/>
+      <mat-label>Last Name</mat-label>
+      <input matInput placeholder="Last Name" formControlName="last_name" />
+      <mat-error *ngIf="last_name?.errors?.['required']">
+        Last Name is required
+      </mat-error>
     </mat-form-field>
     <div class="spacer-t-3"></div>
     <mat-form-field appearance="fill">
-      <mat-label>Address</mat-label>
-      <input matInput/>
+      <mat-label>Telephone Number</mat-label>
+      <input matInput placeholder="Telephone Number" formControlName="telephone_number" />
+      <mat-error *ngIf="telephone_number?.errors?.['required']">
+        Telephone Number is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>DNI</mat-label>
+      <input matInput placeholder="DNI" formControlName="dni" />
+      <mat-error *ngIf="dni?.errors?.['required']">
+        DNI is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Professional Profile</mat-label>
+      <input matInput placeholder="Professional Profile" formControlName="professional_profile" />
+      <mat-error *ngIf="professional_profile?.errors?.['required']">
+        Professional Profile is required
+      </mat-error>
     </mat-form-field>
     <div class="spacer-t-3"></div>
     <div class="example-container">
@@ -38,10 +69,38 @@
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
       </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput [type]="hide_confirm ? 'password' : 'text'" type="password" placeholder="Confirm Password" formControlName="confirm_password"/>
+        <mat-error *ngIf="confirm_password?.errors?.['required']">
+          Confirm Password is required
+        </mat-error>
+        <button mat-icon-button matSuffix (click)="hide_confirm = !hide_confirm" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide_confirm">
+          <mat-icon>{{hide_confirm ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
     </div>
+    <mat-form-field appearance="fill">
+      <mat-label>District</mat-label>
+      <mat-select formControlName="district" >
+        <mat-option *ngFor="let item of  districts" value="{{ item }}">{{ item }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="district?.errors?.['required']">
+        District is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Speciality</mat-label>
+      <mat-select  formControlName="speciality" >
+        <mat-option *ngFor="let item of  specialities" value="{{ item.id }}">{{ item.name }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="speciality?.errors?.['required']">
+        Speciality is required
+      </mat-error>
+    </mat-form-field>
     <div class="spacer-t-5"></div>
     <div class="center margin-top">
-      <button class="login-button" type="submit" mat-raised-button>SIGN UP</button>
+      <button class="login-button" type="submit" mat-raised-button (click)="registerUser()">SIGN UP</button>
     </div>
     <div class="spacer-t-6"></div>
     <span class="center margin-top final-text-login">Do you already have an account? <a class="sign-up-link" routerLink="/log-in">Log in</a></span>
