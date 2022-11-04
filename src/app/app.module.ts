@@ -25,6 +25,7 @@ import {MatListModule} from "@angular/material/list";
 import {MatDividerModule} from '@angular/material/divider';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ChangePasswordComponent } from './dialogs/change-password/pages/change-password/change-password.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     ReservationComponent,
     ServiceRequestComponent,
     SignupComponent,
-    SettingsComponent
+    SettingsComponent,
+    ChangePasswordComponent
   ],
     imports: [
       AppRoutingModule,
