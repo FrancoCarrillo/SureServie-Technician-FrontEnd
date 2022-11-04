@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import { Router } from '@angular/router';
+import {Speciality} from "../../model/Speciality";
 import {SignUpDto} from "../../model/SignUpDto";
 import {SignUpService} from "../../services/sign-up.service";
-import {Speciality} from "../../model/Speciality";
+
 
 @Component({
   selector: 'app-signup',

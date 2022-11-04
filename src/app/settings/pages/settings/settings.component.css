@@ -37,12 +37,4 @@
   margin-top: 6px;
 }
 
-.mat-input-element:disabled, .mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix::after {
-  color: black;
-}
-
-.mat-form-field-appearance-outline.mat-form-field-disabled .mat-form-field-outline {
-  color: rgba(12, 12, 12, 0.06);
-}
-
 

@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {catchError, Observable, throwError} from "rxjs";
-import {Technician} from "../model/Technician";
-import {UpdateTechnicianDto} from "../model/UpdateTechnicianDto";
+import {catchError, Observable, throwError } from 'rxjs';
+import {ChangePasswordDto} from "../model/ChangePasswordDto";
 
 @Injectable({
   providedIn: 'root'
 })
-export class SettingsService {
+export class ChangePasswordService {
 
-  basePath = 'https://sure-service.herokuapp.com/api/v1/technician';
+  basePath = 'https://sure-service.herokuapp.com/api/v1/users/password';
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -28,15 +27,8 @@ export class SettingsService {
     return throwError(() => new Error('Something happened with request, please try again later'));
   }
 
-  updateClient(technicianId: Number, technician: UpdateTechnicianDto): Observable<UpdateTechnicianDto>{
-    return this.http.put<UpdateTechnicianDto>(`${this.basePath}/${technicianId}`, JSON.stringify(technician) ,this.httpOptions)
-      .pipe(
-        catchError(this.handleError)
-      );
-  }
-
-  getTechnician(technicianId: Number): Observable<Technician>{
-    return this.http.get<Technician>(`${this.basePath}/${technicianId}` ,this.httpOptions)
+  changePassword(userId: Number, changePasswordDto: ChangePasswordDto): Observable<ChangePasswordDto>{
+    return this.http.put<ChangePasswordDto>(`${this.basePath}/${userId}`, JSON.stringify(changePasswordDto), this.httpOptions)
       .pipe(
         catchError(this.handleError)
       );
