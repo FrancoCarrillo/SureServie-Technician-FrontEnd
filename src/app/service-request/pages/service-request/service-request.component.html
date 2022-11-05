@@ -1,1 +1,58 @@
-<p>service-request works!</p>
+<h1 class="title">Service Request</h1>
+
+<div class="buttons">
+    <button class="button" mat-raised-button color="primary" (click)="confirm=true">Ver los servicios no confirmados</button>
+    <button mat-raised-button (click)="confirm=false">Ver los servicios confirmados</button>
+</div>
+
+<div *ngIf="confirm==true">
+    <div class="title" *ngIf="servicesNoConfirm.length==0">
+        <h2>Aún no hay ningun servicio solicitado</h2>
+    </div>
+
+    <div class="services" *ngIf="servicesNoConfirm.length != 0">
+        <div *ngFor="let item of servicesNoConfirm">
+        <mat-card class="serviceCard">
+            <img mat-card-image src="https://www.getreskilled.com/wp-content/uploads/2017/02/maintenance-technician-getreskilled.com_.jpg" alt="Photo of a Technician">
+            <mat-card-header>
+            <mat-card-title>{{ item.client.name }} {{ item.client.last_name }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+            <h4 class="text">Detalle:</h4>
+            {{item.detail}}
+            <h4 class="text">Distrito:</h4>
+            {{ item.technician.district }}
+            </mat-card-content>
+            <mat-card-actions>
+                <div class="buttons">
+                    <button class="button" mat-raised-button color="primary" (click)="updateSevice(item)">Confirmar</button>
+                    <button mat-raised-button color="warn" (click)="deleteService(item.id)">Cancelar</button>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="confirm==false">
+    <div class="title" *ngIf="servicesConfirm.length==0">
+        <h2>Aún no hay ningun servicio confirmado</h2>
+    </div>
+
+    <div class="services" *ngIf="servicesConfirm.length != 0">
+        <div *ngFor="let item of servicesConfirm">
+        <mat-card class="serviceCard">
+            <img mat-card-image src="https://www.getreskilled.com/wp-content/uploads/2017/02/maintenance-technician-getreskilled.com_.jpg" alt="Photo of a Technician">
+            <mat-card-header>
+            <mat-card-title>{{ item.client.name }} {{ item.client.last_name }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+            <h4 class="text">Detalle:</h4>
+            {{item.detail}}
+            <h4 class="text">Distrito:</h4>
+            {{ item.technician.district }}
+            </mat-card-content>
+        </mat-card>
+        </div>
+    </div>
+</div>
