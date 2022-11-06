@@ -38,3 +38,25 @@
     margin: 5px 0;
 }
 
+.reservation-chip{
+  padding: 7px 8px 7px 12px;
+}
+
+.accepted-chip{
+  background-color: green;
+  color: #fff;
+  margin: 0 !important;
+  margin-top: 10px !important;
+}
+
+.serviceCard:hover{
+  box-shadow: 0 5px 32px -2px rgba(0,0,0,0.27);
+  background-color: white;
+  border-radius: 1rem;
+}
+
+.chip-icon{
+  margin-left: 5px;
+}
+
+

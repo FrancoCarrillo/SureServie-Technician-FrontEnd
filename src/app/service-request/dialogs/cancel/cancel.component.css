@@ -1,0 +1,10 @@
+.back-button, .change-button {
+  color: white;
+}
+
+.back-button {
+  background-color: #ff0015;
+}
+.change-button {
+  background-color: #0332FC;
+}

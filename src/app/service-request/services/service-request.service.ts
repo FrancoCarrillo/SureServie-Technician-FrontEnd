@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, retry, throwError } from 'rxjs';
+import {UpdateServiceRequestDto} from "../model/UpdateServiceRequestDto";
 
 @Injectable({
   providedIn: 'root'
@@ -32,8 +33,8 @@ export class ServiceRequestService {
       )
   }
 
-  updateService(id: number, item: object){
-    return this.http.put(`${this.basePath}/services/${id}`,item,this.httpOptions)
+  updateService(id: number, item: UpdateServiceRequestDto){
+    return this.http.put<UpdateServiceRequestDto>(`${this.basePath}/services/${id}`, JSON.stringify(item) ,this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)

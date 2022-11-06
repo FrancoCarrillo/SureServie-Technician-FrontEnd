@@ -1,13 +1,29 @@
-<div *ngIf="!confirm">
-    <h2 mat-dialog-title>¿Estas seguro de confirmar este servicio?</h2>
-    <mat-dialog-actions>
-        <button mat-raised-button (click)="confirmRequest()">Confirmar</button>
-        <button mat-raised-button mat-dialog-close>Cancelar</button>
-    </mat-dialog-actions>
+<div *ngIf="showConfirmServiceRequest" [formGroup]="service_request">
+  <h1 mat-dialog-title>Change Password</h1>
+  <mat-form-field appearance="fill" class="password-input">
+    <mat-label>Service Price</mat-label>
+    <input matInput placeholder="Service Price" formControlName="service_price"/>
+    <mat-error *ngIf="service_price?.errors?.['required']">
+      Service Price is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Reservation Price</mat-label>
+    <input matInput placeholder="Reservation Price" formControlName="reservation_price"/>
+    <mat-error *ngIf="reservation_price?.errors?.['required']">
+      Reservation Price is required
+    </mat-error>
+  </mat-form-field>
+  <div mat-dialog-actions>
+    <button mat-stroked-button class="change-button" (click)="changeVisibility('Confirmation-Dialog')" >CONFIRM SERVICE</button>
+    <button mat-stroked-button class="back-button" mat-dialog-close >CANCEL</button>
+  </div>
 </div>
-<div *ngIf="confirm">
-    <h2 mat-dialog-title>Servicio confirmado correctamente</h2>
-    <mat-dialog-actions>
-        <button mat-raised-button mat-dialog-close (click)="reload()">Cerrar</button>
-    </mat-dialog-actions>
+<div *ngIf="showConfirmationDialog">
+  <h1 mat-dialog-title>Are you sure to accept the service?</h1>
+  <div mat-dialog-actions>
+    <button mat-stroked-button class="back-button" (click)="changeVisibility('Confirm-Service')" >No</button>
+    <button mat-stroked-button class="change-button" mat-dialog-close (click)="confirmService()" >Yes</button>
+  </div>
 </div>
+

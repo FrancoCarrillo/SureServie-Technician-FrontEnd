@@ -28,6 +28,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ChangePasswordComponent } from './dialogs/change-password/pages/change-password/change-password.component';
 import { ConfirmComponent } from './service-request/dialogs/confirm/confirm.component';
 import { CancelComponent } from './service-request/dialogs/cancel/cancel.component';
+import {MatChipsModule} from "@angular/material/chips";
 
 
 @NgModule({
@@ -43,25 +44,26 @@ import { CancelComponent } from './service-request/dialogs/cancel/cancel.compone
     CancelComponent
   ],
     imports: [
-      AppRoutingModule,
-      BrowserModule,
-      BrowserAnimationsModule,
-      MatToolbarModule,
-      HttpClientModule,
-      RouterModule,
-      MatButtonModule,
-      MatCardModule,
-      MatInputModule,
-      ReactiveFormsModule,
-      MatIconModule,
-      MatFormFieldModule,
-      MatSidenavModule,
-      MatListModule,
-      MatSelectModule,
-      MatDialogModule,
-      MatDividerModule,
-      MatDatepickerModule,
-      MatSnackBarModule
+        AppRoutingModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        HttpClientModule,
+        RouterModule,
+        MatButtonModule,
+        MatCardModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatSidenavModule,
+        MatListModule,
+        MatSelectModule,
+        MatDialogModule,
+        MatDividerModule,
+        MatDatepickerModule,
+        MatSnackBarModule,
+        MatChipsModule
     ],
   providers: [],
   bootstrap: [AppComponent]

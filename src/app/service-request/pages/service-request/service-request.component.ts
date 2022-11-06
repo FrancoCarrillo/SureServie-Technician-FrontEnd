@@ -15,18 +15,19 @@ export class ServiceRequestComponent implements OnInit {
   servicesNoConfirm: Array<any> = []
   confirm= true
   service: any
+  technicianId: number = 0
   constructor(private serviceService: ServiceRequestService, private _snackBar: MatSnackBar, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.technicianId = Number(localStorage?.getItem("id"))
     this.getAllServices()
   }
 
   getAllServices(){
-    this.serviceService.getServicesByTechnicianId(14).subscribe((response: any)=>{
+    this.serviceService.getServicesByTechnicianId(this.technicianId).subscribe((response: any)=>{
       for (let index = 0; index < response.length; index++) {
-        if(response[index].confirmation==1)
-          this.servicesConfirm.push(response[index])
-        else this.servicesNoConfirm.push(response[index])
+        if(response[index].confirmation==1) this.servicesConfirm.push(response[index])
+        if(response[index].confirmation==0) this.servicesNoConfirm.push(response[index])
       }
     })
   }
@@ -38,9 +39,9 @@ export class ServiceRequestComponent implements OnInit {
     this.openConfirmDialog()
   }
 
-  deleteService(id: number){
+  rejectService(id: number){
     localStorage.setItem('serviceId', JSON.stringify(id));
-    this.openCancelDialog()
+    this.openRejectDialog()
   }
 
   openConfirmDialog(): void {
@@ -52,7 +53,7 @@ export class ServiceRequestComponent implements OnInit {
     });
   }
 
-  openCancelDialog(): void {
+  openRejectDialog(): void {
     const dialogRef = this.dialog.open(CancelComponent, {
     });
 

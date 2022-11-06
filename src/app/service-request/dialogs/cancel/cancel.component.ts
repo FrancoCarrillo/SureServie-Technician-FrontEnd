@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceRequestService } from '../../services/service-request.service';
+import {UpdateServiceRequestDto} from "../../model/UpdateServiceRequestDto";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-cancel',
@@ -10,7 +12,7 @@ export class CancelComponent implements OnInit {
 
   confirm = false
 
-  constructor(private serviceService: ServiceRequestService) { }
+  constructor(private serviceService: ServiceRequestService, private _snackBar: MatSnackBar) { }
 
   getCurrentService(){
     let currentService= localStorage.getItem('serviceId')
@@ -24,7 +26,11 @@ export class CancelComponent implements OnInit {
   }
 
   cancelRequest(){
-    this.serviceService.deleteService(this.getCurrentService()).subscribe((response: any)=>{
+    console.log(this.getCurrentService())
+    let updateServiceRequestDto = new UpdateServiceRequestDto(0, 0, 2);
+    this.serviceService.updateService(this.getCurrentService(), updateServiceRequestDto).subscribe((response: any)=>{
+      this.openSnackBar()
+      this.reload()
     })
     this.confirm = true
   }
@@ -32,4 +38,13 @@ export class CancelComponent implements OnInit {
   reload(){
     window.location.reload()
   }
+
+  openSnackBar(){
+    this._snackBar.open("Service Reject Successfully!", "Close", {
+      duration: 5000,
+      panelClass: ['snackbar-service']
+    });
+  }
+
+
 }
