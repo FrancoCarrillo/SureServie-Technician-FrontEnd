@@ -4,54 +4,60 @@
     <h1 class="title">Reservation</h1>
     <form [formGroup]="reservationForm">
       <mat-form-field class="form" appearance="fill">
-        <mat-label>Service Request Status</mat-label>
+        <mat-label>Reservation Status</mat-label>
         <mat-select formControlName="status" required>
-          <mat-option value=0>WAITING</mat-option>
-          <mat-option value=1>ACCEPTED</mat-option>
-          <mat-option value=2>REJECTED</mat-option>
+          <mat-option value=0>PAYED</mat-option>
+          <mat-option value=1>SERVICE DONE</mat-option>
         </mat-select>
       </mat-form-field>
     </form>
   </div>
   <div class="containbutton">
     <button mat-raised-button mat-button color="primary" class="button" (click)="filterByStatus()" >Search</button>
-    <button mat-raised-button mat-button color="warn" class="button" style="margin-top: 5px" (click)="serviceRequest=allServiceRequest">All</button>
+    <button mat-raised-button mat-button color="warn" class="button" style="margin-top: 5px" (click)="reservations=allReservation">All</button>
   </div>
 </div>
 
 <!-- Reservation Cards -->
-<div class="service-request" *ngIf="serviceRequest.length != 0">
-  <div *ngFor="let item of serviceRequest">
-    <mat-card class="service-card">
-      <mat-card-title>{{item.client.name}} {{item.client.last_name}}</mat-card-title>
+<div class="reservation" *ngIf="reservations.length != 0">
+  <div *ngFor="let item of reservations">
+    <mat-card class="reservation-card">
+      <img mat-card-image src="{{ item.serviceRequest.client.image_url }}"
+           alt="Technician Photo"
+           style="height: 50%; object-fit: cover;"
+      >
+      <mat-card-header>
+        <mat-card-title>{{item.serviceRequest.client.name}} {{item.serviceRequest.client.last_name}}</mat-card-title>
+      </mat-card-header>
       <mat-card-content>
-        <h4 class="text">Detail:</h4>
-        {{item.detail}}
         <h4 class="text">Status:</h4>
         <mat-chip-list>
-          <mat-chip class="waiting-chip reservation-chip" *ngIf="item.confirmation==0" >
-            Waiting Response
-            <mat-icon class="chip-icon">timer</mat-icon>
+          <mat-chip color="primary" class="reservation-chip"  *ngIf="item.status==0 " selected>
+            RESERVATION PAYED
+            <mat-icon class="chip-icon">paid</mat-icon>
           </mat-chip>
-          <mat-chip class="accepted-chip reservation-chip" *ngIf="item.confirmation==1" >
-            Accepted Response
+          <mat-chip class="accepted-chip reservation-chip" *ngIf="item.status!=0" >
+            SERVICE DONE
             <mat-icon class="chip-icon">check</mat-icon>
           </mat-chip>
-          <mat-chip color="warn" class="reservation-chip" *ngIf="item.confirmation==2" selected>
-            Rejected Response
-            <mat-icon class="chip-icon">close</mat-icon>
-          </mat-chip>
         </mat-chip-list>
-        <mat-card-actions class="button-list" *ngIf="item.confirmation==0">
-          <button class="accept-button" mat-flat-button color="primary"
-                  (click)="updateRequest(1, item.id, item.total_price, item.reservation_price)">ACCEPT</button>
-          <button mat-flat-button color="warn"
-                  (click)="updateRequest(2, item.id, item.total_price, item.reservation_price)">REJECT</button>
+        <h4 class="text">Detail:</h4>
+        {{item.serviceRequest.detail}}
+        <span>
+          <h4 class="text" >Email:</h4>
+          {{ item.serviceRequest.client.email }}
+        </span>
+        <span>
+          <h4 class="text" >Telephone number:</h4>
+          {{ item.serviceRequest.client.telephone_number }}
+        </span>
+        <mat-card-actions *ngIf="item.status==0 ">
+          <button class="accept-button" mat-flat-button color="primary" (click)="updateRequest(1, item.id, item.date_of)">DONE</button>
         </mat-card-actions>
       </mat-card-content>
     </mat-card>
   </div>
 </div>
-<div class="service-request" *ngIf="serviceRequest.length == 0">
-  <h3>Didn't find service request with these status</h3>
+<div class="reservation" *ngIf="reservations.length == 0">
+  <h3>Didn't find reservations with these status</h3>
 </div>

@@ -13,7 +13,7 @@
     <div class="services" *ngIf="servicesNoConfirm.length != 0">
         <div *ngFor="let item of servicesNoConfirm" >
         <mat-card class="serviceCard">
-            <img mat-card-image src="https://www.getreskilled.com/wp-content/uploads/2017/02/maintenance-technician-getreskilled.com_.jpg" alt="Photo of a Technician">
+            <img mat-card-image src="{{ item.client.image_url }}" style="height: 50%; object-fit: cover;" alt="Photo of a Technician">
             <mat-card-header>
             <mat-card-title>{{ item.client.name }} {{ item.client.last_name }}</mat-card-title>
             </mat-card-header>
@@ -42,7 +42,7 @@
     <div class="services" *ngIf="servicesConfirm.length != 0">
         <div *ngFor="let item of servicesConfirm">
         <mat-card class="serviceCard">
-            <img mat-card-image src="https://www.getreskilled.com/wp-content/uploads/2017/02/maintenance-technician-getreskilled.com_.jpg" alt="Photo of a Technician">
+            <img mat-card-image src="{{ item.client.image_url }}"  style="height: 50%; object-fit: cover;" alt="Photo of a Technician">
             <mat-card-header>
             <mat-card-title>{{ item.client.name }} {{ item.client.last_name }}</mat-card-title>
             </mat-card-header>

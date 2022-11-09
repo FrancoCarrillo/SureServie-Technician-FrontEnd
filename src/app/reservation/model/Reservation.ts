@@ -1,3 +1,10 @@
+export interface Reservation{
+  id: number;
+  date_of: string;
+  status: number;
+  serviceRequest: ServiceRequest;
+}
+
 export interface ServiceRequest {
   id: number;
   detail: String;
@@ -19,7 +26,8 @@ export interface Technician {
   telephone_number: String;
   name: String;
   last_name: String;
-
+  image_url: String;
+  image_Id: String;
   speciality: Speciality;
 }
 
@@ -30,6 +38,8 @@ export interface Client {
   last_name: String;
   email: String;
   dni: String;
+  image_url: String;
+  image_Id: String;
   telephone_number: String;
 }
 

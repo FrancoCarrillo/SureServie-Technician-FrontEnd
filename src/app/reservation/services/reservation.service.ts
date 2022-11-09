@@ -30,16 +30,16 @@ export class ReservationService {
     return throwError(() => new Error('Something happened with request, please try again later'));
   }
 
-  getServiceRequestByTechnicianId(technicianId: number){
-    return this.http.get(`${this.basePath}/services/technician/${technicianId}`, this.httpOptions)
+  getReservationByTechnicianId(technicianId: number){
+    return this.http.get(`${this.basePath}/reservations/technician/${technicianId}`, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
       )
   }
 
-  updateServiceRequest(serviceRequestId: number, item: object):Observable<any>{
-    return this.http.put(`${this.basePath}/services/${serviceRequestId}`, item, this.httpOptions)
+  updateReservation(reservationId: number, item: object):Observable<any>{
+    return this.http.put(`${this.basePath}/reservations/${reservationId}`, item, this.httpOptions)
       .pipe(
         tap(() => {
           this._refresh$.next();

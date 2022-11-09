@@ -41,11 +41,4 @@ export class ServiceRequestService {
       )
   }
 
-  deleteService(id: number){
-    return this.http.delete(`${this.basePath}/services/${id}`,this.httpOptions)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
-  }
 }

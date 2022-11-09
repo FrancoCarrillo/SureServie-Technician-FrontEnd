@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {MatDialog} from "@angular/material/dialog";
 import {ReservationService} from "../../services/reservation.service";
-import {ServiceRequest} from "../../model/ServiceRequest";
+import {Reservation} from "../../model/Reservation";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Subject, Subscription} from "rxjs";
 
@@ -15,8 +15,8 @@ export class ReservationComponent implements OnInit, OnDestroy {
   selected = new FormControl()
   buttonClicked = false;
   technicianId: number = +localStorage.getItem("id")!;
-  serviceRequest: Array<ServiceRequest> = [];
-  allServiceRequest: Array<ServiceRequest> = [];
+  reservations: Array<Reservation> = [];
+  allReservation: Array<Reservation> = [];
   reservationForm :FormGroup= this.builder.group({status: this.selected,});
   subscription: Subscription = new Subscription();
 
@@ -24,10 +24,10 @@ export class ReservationComponent implements OnInit, OnDestroy {
               public dialog: MatDialog, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    this.getServiceRequestByTechnicianId();
+    this.getReservationByTechnicianId();
 
     this.subscription = this.reservationService.getRefresh$().subscribe(() =>{
-      this.getServiceRequestByTechnicianId();
+      this.getReservationByTechnicianId();
     })
   }
 
@@ -37,7 +37,7 @@ export class ReservationComponent implements OnInit, OnDestroy {
   }
 
   openSnackBar(){
-    this._snackBar.open("Service response successful!", "Close", {
+    this._snackBar.open("Updated Reservation Successfully!", "Close", {
       duration: 5000,
       panelClass: ['snackbar-service']
     });
@@ -46,27 +46,27 @@ export class ReservationComponent implements OnInit, OnDestroy {
   filterByStatus(){
     if(this.reservationForm.get("status")?.status == "VALID"){
       const status = this.reservationForm.get("status")?.value
-      this.serviceRequest = this.allServiceRequest.filter(e=>e.confirmation == status)
+      this.reservations = this.allReservation.filter(e=>e.status == status)
     } else{
       alert("Invalid Information")
     }
   }
 
-  getServiceRequestByTechnicianId(){
-    this.reservationService.getServiceRequestByTechnicianId(this.technicianId).subscribe( (response: any) => {
-      this.allServiceRequest = response;
-      this.allServiceRequest = this.allServiceRequest.filter(e=>e.confirmation != 3)
-      this.serviceRequest = this.allServiceRequest;
+  getReservationByTechnicianId(){
+    this.reservationService.getReservationByTechnicianId(this.technicianId).subscribe( (response: any) => {
+      this.allReservation = response;
+      this.allReservation = this.allReservation.filter(e=>e.status != 2)
+
+      this.reservations = this.allReservation;
     })
   }
 
-  updateRequest(confirmation: number, reservationId: number, totalPrince: number, reservationPrice: number){
+  updateRequest(status: number, reservationId: number, date_of: string){
     const updateService={
-      "total_price": totalPrince,
-      "reservation_price": reservationPrice,
-      "confirmation": confirmation
+      "date_of": date_of,
+      "status": status
     }
-    this.reservationService.updateServiceRequest(reservationId, updateService).subscribe((response: any) => {
+    this.reservationService.updateReservation(reservationId, updateService).subscribe((response: any) => {
       console.log(response)
     })
     this.buttonClicked = true

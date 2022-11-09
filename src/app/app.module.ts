@@ -29,6 +29,7 @@ import {MatChipsModule} from "@angular/material/chips";
 import { ChangePasswordComponent } from './dialogs/change-password/pages/change-password/change-password.component';
 import { ConfirmComponent } from './service-request/dialogs/confirm/confirm.component';
 import { CancelComponent } from './service-request/dialogs/cancel/cancel.component';
+import {UpdateImageComponent} from "./dialogs/update-image/pages/update-image/update-image.component";
 
 
 
@@ -42,7 +43,8 @@ import { CancelComponent } from './service-request/dialogs/cancel/cancel.compone
     SettingsComponent,
     ChangePasswordComponent,
     ConfirmComponent,
-    CancelComponent
+    CancelComponent,
+    UpdateImageComponent
   ],
     imports: [
         AppRoutingModule,

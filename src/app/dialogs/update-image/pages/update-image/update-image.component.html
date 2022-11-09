@@ -1,0 +1,10 @@
+<form enctype="multipart/form-data"   (ngSubmit)="onUpload()" novalidate *ngIf="showChangeDialog" [formGroup]="update_image">
+  <h1 mat-dialog-title>Change Image</h1>
+  <div>
+    <input type="file" class="form-control" id="image" #imageFile (change)="onFileChange($event)" accept="image/png, image/jpeg" formControlName="image" />
+  </div>
+  <div mat-dialog-actions>
+    <button mat-stroked-button class="change-button" type="submit" >CHANGE IMAGE</button>
+    <button mat-stroked-button class="back-button" mat-dialog-close >CANCEL</button>
+  </div>
+</form>

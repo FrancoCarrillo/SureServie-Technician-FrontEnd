@@ -1,7 +1,7 @@
 <div class="settings">
   <div class="image-user">
-    <img src="./assets/user.png" alt="profile-img">
-    <button class="save-button" type="submit" mat-raised-button>Change Profile Image</button>
+    <img src="{{ technician.image_url }}" alt="profile-img">
+    <button class="save-button" (click)="updateImage()" mat-raised-button>Change Profile Image</button>
   </div>
   <div style=" flex: 1;">
     <form [formGroup]="settingsForm" class="settings-form">

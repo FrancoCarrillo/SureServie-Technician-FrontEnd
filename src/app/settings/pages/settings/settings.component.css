@@ -8,13 +8,22 @@
 
   padding: 20px 20px 0;
 }
+
 .image-user{
   display: flex;
   flex-direction: column;
   flex: 1;
-
+  width: 50%;
   padding: 20px 3.3rem;
 }
+
+
+.image-user img{
+  height: 84%;
+  object-fit: cover;
+}
+
+
 .edit-button, .save-button, .cancel-button {
   color: white;
 }

@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup} from "@angular/forms";
 import {SettingsService} from "../../services/settings.service";
 import {Speciality, Technician} from "../../model/Technician";
 import {MatDialog} from "@angular/material/dialog";
-import {
-  ChangePasswordComponent
-} from "../../../dialogs/change-password/pages/change-password/change-password.component";
+import {ChangePasswordComponent}from "../../../dialogs/change-password/pages/change-password/change-password.component";
 import {UpdateTechnicianDto} from "../../model/UpdateTechnicianDto";
+import {UpdateImageComponent} from "../../../dialogs/update-image/pages/update-image/update-image.component";
 
 @Component({
   selector: 'app-settings',
@@ -64,7 +63,7 @@ export class SettingsComponent implements OnInit {
 
   enable: boolean = false
   technicianId: Number = 0;
-  technician: Technician = new Technician(0, "", "", "", "",  "", "", "", 0, "", 0, new Speciality(0, ""));
+  technician: Technician = new Technician(0, "", "", "", "",  "", "", "", 0, "", 0, new Speciality(0, ""), "", "");
 
   settingsForm = new FormGroup({
     name: new FormControl(),
@@ -129,6 +128,13 @@ export class SettingsComponent implements OnInit {
   changePassword(): void {
     const dialogRef = this.dialog.open(ChangePasswordComponent)
     dialogRef.afterClosed().subscribe();
+  }
+
+  updateImage(): void {
+    const dialogRef = this.dialog.open(UpdateImageComponent)
+    dialogRef.afterClosed().subscribe(e=>{
+      this.getTechnician()
+    });
   }
 
 }

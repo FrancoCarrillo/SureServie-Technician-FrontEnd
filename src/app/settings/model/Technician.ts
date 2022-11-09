@@ -11,8 +11,10 @@ export class Technician{
   district: String;
   disponibility: number;
   speciality: Speciality;
+  image_url: String;
+  image_Id: String;
 
-  constructor(id: number, username: String, name: String, last_name: String, telephone_number: String, dni: String, email: String, professional_profile: String, valoration: number, district: String, disponibility: number, speciality: Speciality) {
+  constructor(id: number, username: String, name: String, last_name: String, telephone_number: String, dni: String, email: String, professional_profile: String, valoration: number, district: String, disponibility: number, speciality: Speciality, image_url: String, image_Id: String) {
     this.id = id;
     this.username = username;
     this.name = name;
@@ -25,6 +27,8 @@ export class Technician{
     this.district = district;
     this.disponibility = disponibility;
     this.speciality = speciality;
+    this.image_Id = image_Id;
+    this.image_url = image_url;
   }
 }
 
