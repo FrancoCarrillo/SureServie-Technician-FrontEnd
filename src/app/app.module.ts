@@ -25,6 +25,7 @@ import {MatListModule} from "@angular/material/list";
 import {MatDividerModule} from '@angular/material/divider';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatChipsModule} from "@angular/material/chips";
 
 
 @NgModule({
@@ -37,25 +38,26 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     SettingsComponent
   ],
     imports: [
-      AppRoutingModule,
-      BrowserModule,
-      BrowserAnimationsModule,
-      MatToolbarModule,
-      HttpClientModule,
-      RouterModule,
-      MatButtonModule,
-      MatCardModule,
-      MatInputModule,
-      ReactiveFormsModule,
-      MatIconModule,
-      MatFormFieldModule,
-      MatSidenavModule,
-      MatListModule,
-      MatSelectModule,
-      MatDialogModule,
-      MatDividerModule,
-      MatDatepickerModule,
-      MatSnackBarModule
+        AppRoutingModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        HttpClientModule,
+        RouterModule,
+        MatButtonModule,
+        MatCardModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatSidenavModule,
+        MatListModule,
+        MatSelectModule,
+        MatDialogModule,
+        MatDividerModule,
+        MatDatepickerModule,
+        MatSnackBarModule,
+        MatChipsModule
     ],
   providers: [],
   bootstrap: [AppComponent]
