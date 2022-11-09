@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   navItem = [
     {
       "title": "Service Request",
-      "router":"service-request-request",
+      "router":"service-request",
       "icon": "assignment"
     },
     {

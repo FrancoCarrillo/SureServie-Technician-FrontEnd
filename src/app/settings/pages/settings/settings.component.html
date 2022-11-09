@@ -1,1 +1,52 @@
-<p>settings works!</p>
+<div class="settings">
+  <div class="image-user">
+    <img src="./assets/user.png" alt="profile-img">
+    <button class="save-button" type="submit" mat-raised-button>Change Profile Image</button>
+  </div>
+  <div style=" flex: 1;">
+    <form [formGroup]="settingsForm" class="settings-form">
+      <mat-form-field appearance="outline" class="input-settings" >
+        <mat-label>Your Name</mat-label>
+        <input matInput value="{{ technician.name }}"  [(ngModel)]="technician.name" placeholder="Name" formControlName="name">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Your lastname</mat-label>
+        <input matInput value="{{ technician.last_name }}" [(ngModel)]="technician.last_name" placeholder="Lastname" formControlName="lastname">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Your telephone number</mat-label>
+        <input matInput value="{{ technician.telephone_number }}" [(ngModel)]="technician.telephone_number" placeholder="Telephone Number" formControlName="telephone_number">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>ID Number</mat-label>
+        <input matInput value="{{ technician.dni }}" [(ngModel)]="technician.dni" placeholder="ID Number" formControlName="id_number">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Your username</mat-label>
+        <input matInput value="{{ technician.username }}" [(ngModel)]="technician.username" placeholder="Username" formControlName="username">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Your email</mat-label>
+        <input matInput value="{{ technician.email }}" [(ngModel)]="technician.email" placeholder="Email" formControlName="email">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Professional Profile</mat-label>
+        <textarea matInput value="{{ technician.professional_profile }}" [(ngModel)]="technician.professional_profile" placeholder="Professional Profile" formControlName="professional_profile" rows="4"></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>District</mat-label>
+        <mat-select formControlName="district"  value="{{ technician.district }}" [(ngModel)]="technician.district">
+          <mat-option *ngFor="let item of  districts" value="{{ item }}">{{ item }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+    <div class="settings-button">
+      <button *ngIf="!enable" class="edit-button" type="submit" mat-raised-button (click)="editForm()">EDIT</button>
+      <button *ngIf="!enable" class="cancel-button" type="submit" mat-raised-button (click)="changePassword()">CHANGE PASSWORD</button>
+      <button *ngIf="enable" class="save-button" type="submit" mat-raised-button (click)="saveData()">SAVE</button>
+      <button *ngIf="enable" class="cancel-button" type="submit" mat-raised-button (click)="cancelEditForm()">CANCEL</button>
+    </div>
+  </div>
+
+</div>
+

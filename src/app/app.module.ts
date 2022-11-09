@@ -26,6 +26,9 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatChipsModule} from "@angular/material/chips";
+import { ChangePasswordComponent } from './dialogs/change-password/pages/change-password/change-password.component';
+import { ConfirmComponent } from './service-request/dialogs/confirm/confirm.component';
+import { CancelComponent } from './service-request/dialogs/cancel/cancel.component';
 
 
 @NgModule({
@@ -35,7 +38,10 @@ import {MatChipsModule} from "@angular/material/chips";
     ReservationComponent,
     ServiceRequestComponent,
     SignupComponent,
-    SettingsComponent
+    SettingsComponent,
+    ChangePasswordComponent,
+    ConfirmComponent,
+    CancelComponent
   ],
     imports: [
         AppRoutingModule,

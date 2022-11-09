@@ -1,0 +1,67 @@
+mat-card {
+  max-width: 600px;
+  margin: 2em auto;
+  text-align: center;
+}
+
+.header{
+  text-align: center;
+
+}
+
+mat-form-field {
+  width: 90%;
+}
+
+.login-button{
+  width: 80%;
+  height: 3em;
+  background-color: #0332FC;
+  color: white;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.sign-up-link{
+  text-decoration: none;
+}
+
+.header-login{
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 70px;
+}
+
+.final-text-login{
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.spacer-t-1{
+  margin-top: 50px;
+}
+
+.spacer-t-2{
+  margin-top: 70px;
+}
+
+.spacer-t-3{
+  margin-top: 10px;
+}
+
+.spacer-t-4{
+  margin-top: 20px;
+}
+
+.spacer-t-5{
+  margin-top: 40px;
+}
+
+.spacer-t-6{
+  margin-top: 30px;
+}
