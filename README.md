@@ -11,4 +11,4 @@ Repository for the frontend of the SureService application, this frontend applic
 
 ## URL
 
-- SureService Application URL : []()
+- SureService Application URL : [https://sureservice-technician.netlify.app/](https://sureservice-technician.netlify.app/)
